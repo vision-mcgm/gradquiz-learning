@@ -42,8 +42,9 @@ deactivate nondestructive
 VIRTUAL_ENV="/Users/fintan/Dropbox/gradquiz/src/gqEnv"
 export VIRTUAL_ENV
 
-_OLD_VIRTUAL_PATH="$PATH"
-PATH="$VIRTUAL_ENV/bin:$PATH"
+_OLD_VIRTUAL_PATH="/Users/fintan/anaconda/lib/python2.7/site-packages/numpy:$PATH"
+PATH="/Users/fintan/anaconda/lib/python2.7/site-packages/numpy:$PATH"
+
 export PATH
 
 # unset PYTHONHOME if set
