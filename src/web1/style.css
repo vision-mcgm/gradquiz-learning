@@ -1,0 +1,17 @@
+body{
+  margin:0;
+  padding:20px;
+  font:20pt PC Sans, sans-serif;
+  background:#007FFF;
+}
+
+@font-face {
+    font-family: 'PC Sans';
+    src: url('PTC55F.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#viewport{
+	background:#007FFF;
+}

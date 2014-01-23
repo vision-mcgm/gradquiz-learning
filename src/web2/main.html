@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas Primer - Example: Drawing text</title>
+    <script type="text/javascript"><!--
+
+    function drawCircle(context)
+    {
+      //context.font="20px PT Sans";
+      context.fillText("LOL",20+10,20+10);
+      context.fillStyle = 'black';
+         // ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
+      context.beginPath();
+      context.arc(Math.round(500*Math.random()), Math.round(500*Math.random()), 10, 0, 2 * Math.PI, false);
+      context.fillStyle = 'green';
+      context.fill();
+    }
+
+    function drawPoint(c,x,y,string){
+      c.font         = 'italic 30px sans-serif';
+      c.fillStyle = 'black';
+      c.fillText(string,x+10,y+10);
+      
+      c.beginPath();
+      c.arc(x, y, 10, 0, 2 * Math.PI, false);
+      c.fillStyle = 'green';
+      c.fill();
+    }
+    function randPoint(xmax,ymax){
+      x=Math.round(xmax*Math.random());
+      y=Math.round(ymax*Math.random());
+      return [x,y];
+    }
+
+    function drawTreeSection(c,x,y){
+      drawPoint(c,x,y,'Skills');
+      var sep=40;
+
+      drawPoint(c,x+sep,y+sep,'Maths');
+      drawPoint(c,x-sep,y+sep,'Programming');
+      drawPoint(c,x+sep,y-sep,'Lab work');
+      drawPoint(c,x-sep,y-sep,'Communication');
+
+    }
+
+window.addEventListener('load', function () {
+  // Get the canvas element.
+  var elem = document.getElementById('myCanvas');
+  if (!elem || !elem.getContext) {
+    return;
+  }
+
+  // Get the canvas 2d context.
+  var context = elem.getContext('2d');
+  if (!context) {
+    return;
+  }
+
+  // Let's draw "Hello world!" in blue.
+  context.fillStyle    = '#00f';
+
+  // The font property is like the CSS font property.
+  context.font         = 'italic 30px sans-serif';
+  context.textBaseline = 'top';
+
+  if (context.fillText) {
+   // context.fillText('Hello world!', 0, 0);
+  }
+
+//var i=1;
+//while(i<500){
+ // alert('ha');
+//i++;
+//doMove();
+//}
+
+doMove();
+
+function doMove(){
+  draw();
+  setTimeout(doMove,2000);
+  }
+
+function draw(){
+  var pt=randPoint(500,500);
+  drawTreeSection(context,pt[0],pt[1]);
+}
+  
+
+  // It looks like WebKit doesn't support the strokeText method.
+  // Tested on Ubuntu 8.10 Linux in WebKitGTK revision 38095 (2008-11-04, svn 
+  // trunk build).
+  context.font = 'bold 30px sans-serif';
+  if (context.strokeText) {
+    context.strokeText('Hello world!', 0, 50);
+  }
+}, false);
+    // --></script>
+  </head>
+  <body>
+    <p><canvas id="myCanvas" width="1000" height="1000">Your browser does not have 
+    support for Canvas.  This should render as: <img 
+    src="images/example-text.jpg" alt="Example text render."></canvas></p>
+  </body>
+</html>
